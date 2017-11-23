@@ -29,7 +29,8 @@ SOURCES += \
     MenuWidget.cpp \
     GameWidget.cpp \
     KeyboardController.cpp \
-    Receiver.cpp
+    Receiver.cpp \
+    Game.cpp
 
 HEADERS += \
         MainWindow.hpp \
@@ -37,4 +38,5 @@ HEADERS += \
     GameWidget.hpp \
     Controller.hpp \
     KeyboardController.hpp \
-    Receiver.hpp
+    Receiver.hpp \
+    Game.hpp
