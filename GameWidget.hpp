@@ -20,6 +20,12 @@ private:
 signals:
 
 public slots:
+	void updateGame();
+
+public:
+	static const QColor birdColor;
+	static const QColor pipeColor;
+	static const QColor backgroundColor;
 };
 
 #endif // GAMEWIDGET_HPP
