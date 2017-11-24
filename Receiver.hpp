@@ -6,18 +6,20 @@
 
 class Receiver : public QObject
 {
-	Q_OBJECT
+    Q_OBJECT
 public:
-	explicit Receiver(Controller*, QObject *parent = nullptr);
+    explicit Receiver(Controller*, QObject* parent = nullptr);
+
+    void setController(Controller*);
 
 private:
-	Controller* controller_;
+    Controller* controller_;
 
 signals:
-	void sendData();
+    void sendData();
 
 public slots:
-	virtual void doFlap() = 0;
+    virtual void doFlap() = 0;
 };
 
 #endif // RECEIVER_HPP

@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QTimer>
+#include <QKeyEvent>
 
 class GameWidget : public QWidget
 {
@@ -11,8 +12,16 @@ public:
 	explicit GameWidget(QWidget *parent = nullptr);
 	~GameWidget();
 
+public:
+	enum GameMode
+	{
+		PLAYER_MODE,
+		AI_MODE
+	};
+
 protected:
 	void paintEvent(QPaintEvent*) override;
+	void keyPressEvent(QKeyEvent*) override;
 
 private:
 	QTimer* updateTimer;

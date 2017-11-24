@@ -5,12 +5,12 @@
 
 class Controller : public QObject
 {
-	Q_OBJECT
+    Q_OBJECT
 signals:
-	void flap();
+    void flap();
 
 public slots:
-	virtual void receiveData() = 0;
+    virtual void receiveData() = 0;
 };
 
 #endif // CONTROLLER_H

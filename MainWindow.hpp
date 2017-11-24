@@ -6,21 +6,21 @@
 
 class MainWindow : public QMainWindow
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	MainWindow(QWidget *parent = 0);
-	~MainWindow();
+    MainWindow(QWidget* parent = 0);
+    ~MainWindow();
 
 public slots:
-	void startPlayerGame();
-	void startAiGame();
+    void startPlayerGame();
+    void startAiGame();
 
 private:
-	QStackedWidget* manager_;
+    QStackedWidget* manager_;
 
-	int menuIndex_;
-	int gameIndex_;
+    int menuIndex_;
+    int gameIndex_;
 };
 
 #endif // MAINWINDOW_HPP

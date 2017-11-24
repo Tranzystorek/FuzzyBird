@@ -17,5 +17,5 @@ void GameLogic::Game::doFlap()
 
 const QList<GameLogic::Pipe> &GameLogic::Game::getPipes() const
 {
-	return pipes_;
+    return pipes_;
 }

@@ -6,9 +6,9 @@
 class KeyboardController : public Controller
 {
 public:
-	KeyboardController();
+    KeyboardController();
 
-	void receiveData() override;
+    void receiveData() override;
 };
 
 #endif // KEYBOARDCONTROLLER_HPP

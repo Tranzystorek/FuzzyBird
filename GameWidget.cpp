@@ -9,41 +9,46 @@ const QColor GameWidget::birdColor = QColor(253, 231, 50);
 const QColor GameWidget::pipeColor = QColor(96, 181, 34);
 const QColor GameWidget::backgroundColor = QColor(111, 198, 207);
 
-GameWidget::GameWidget(QWidget *parent) : QWidget(parent)
+GameWidget::GameWidget(QWidget* parent) : QWidget(parent)
 {
-	updateTimer = new QTimer();
+    updateTimer = new QTimer();
 
-	QPalette pal = palette();
-	pal.setColor(QPalette::Background, backgroundColor);
-	setPalette(pal);
+    QPalette pal = palette();
+    pal.setColor(QPalette::Background, backgroundColor);
+    setPalette(pal);
 
-	setAutoFillBackground(true);
+    setAutoFillBackground(true);
+    setMinimumSize(800, 600);
+    setMaximumSize(800, 600);
 
-	//TODO Game
+    //TODO Game
 
-	connect(updateTimer, SIGNAL(timeout()),
-			this, SLOT(updateGame()));
+    connect(updateTimer, SIGNAL(timeout()),
+            this, SLOT(updateGame()));
 
-	//TODO need a separate init method for this
-	updateTimer->start(FPS_MILISECOND_INTERVAL);
+    //TODO need a separate init method for this
+    updateTimer->start(FPS_MILISECOND_INTERVAL);
 }
 
 GameWidget::~GameWidget()
 {
-	delete updateTimer;
+    delete updateTimer;
 }
 
-void GameWidget::paintEvent(QPaintEvent* event)
+void GameWidget::paintEvent(QPaintEvent*)
 {
-	//to disable "unused" warnings temporarily
-	(void)event;
+    QPainter painter(this);
+}
 
-	QPainter painter(this);
+void GameWidget::keyPressEvent(QKeyEvent* event)
+{
+    //temporarily disable warnings
+    (void)event;
 }
 
 void GameWidget::updateGame()
 {
-	//TODO add game logic update here
+    //TODO add game logic update here
 
-	update();
+    update();
 }
