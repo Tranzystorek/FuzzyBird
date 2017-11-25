@@ -16,7 +16,7 @@ void GameLogic::Game::start()
 {
     mainTimer_.start();
     hoverTimer_.start();
-    birdState_ = GameLogic::FALLING;
+    birdState_ = GameLogic::HOVERING;
 }
 
 void GameLogic::Game::update()
@@ -49,11 +49,11 @@ void GameLogic::Game::update()
         if(flightTimer_.elapsed() > Constants::FLIGHT_DURATION_MSEC)
         {
             hoverTimer_.restart();
-            birdState_ = GameLogic::STILL;
+            birdState_ = GameLogic::HOVERING;
         }
     }
 
-    else if(birdState_ == GameLogic::STILL)
+    else if(birdState_ == GameLogic::HOVERING)
     {
         bird_r += dt * Constants::BIRD_HOVER_ROTATION_SPEED;
 

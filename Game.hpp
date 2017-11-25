@@ -29,7 +29,7 @@ struct Bird
 
 enum BirdState
 {
-    STILL,
+    HOVERING,
     FLYING,
     FALLING
 };
