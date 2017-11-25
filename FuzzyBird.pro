@@ -39,4 +39,5 @@ HEADERS += \
     Controller.hpp \
     KeyboardController.hpp \
     Receiver.hpp \
-    Game.hpp
+    Game.hpp \
+    Constants.hpp

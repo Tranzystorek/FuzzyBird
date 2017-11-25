@@ -5,11 +5,15 @@
 #include <QTimer>
 #include <QKeyEvent>
 
+#include "KeyboardController.hpp"
+
+#include "Game.hpp"
+
 class GameWidget : public QWidget
 {
 	Q_OBJECT
 public:
-	explicit GameWidget(QWidget *parent = nullptr);
+    explicit GameWidget(QWidget* parent = nullptr);
 	~GameWidget();
 
 public:
@@ -19,22 +23,24 @@ public:
 		AI_MODE
 	};
 
+public:
+    void start();
+
 protected:
 	void paintEvent(QPaintEvent*) override;
 	void keyPressEvent(QKeyEvent*) override;
 
 private:
-	QTimer* updateTimer;
+    KeyboardController kcontroller_;
+
+private:
+    QTimer updateTimer_;
+    GameLogic::Game game_;
 
 signals:
 
 public slots:
 	void updateGame();
-
-public:
-	static const QColor birdColor;
-	static const QColor pipeColor;
-	static const QColor backgroundColor;
 };
 
 #endif // GAMEWIDGET_HPP

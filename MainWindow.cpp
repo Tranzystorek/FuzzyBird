@@ -4,9 +4,14 @@
 #include "MenuWidget.hpp"
 #include "GameWidget.hpp"
 
+#include "Constants.hpp"
+
 MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
 {
+    setFixedSize(Constants::SCREEN_WIDTH,
+                 Constants::SCREEN_HEIGHT);
+
     MenuWidget* menu = new MenuWidget;
     GameWidget* game = new GameWidget;
 
@@ -32,6 +37,7 @@ MainWindow::~MainWindow()
 void MainWindow::startPlayerGame()
 {
     manager_->setCurrentIndex(gameIndex_);
+    ((GameWidget*)(manager_->currentWidget()))->start();
 }
 
 void MainWindow::startAiGame()

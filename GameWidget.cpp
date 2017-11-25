@@ -1,54 +1,64 @@
 #include "GameWidget.hpp"
 
-#define FPS 30
-#define FPS_MILISECOND_INTERVAL (1000 / FPS)
-
 #include <QPainter>
 
-const QColor GameWidget::birdColor = QColor(253, 231, 50);
-const QColor GameWidget::pipeColor = QColor(96, 181, 34);
-const QColor GameWidget::backgroundColor = QColor(111, 198, 207);
+#include "Constants.hpp"
 
-GameWidget::GameWidget(QWidget* parent) : QWidget(parent)
+GameWidget::GameWidget(QWidget* parent) : QWidget(parent), game_(&kcontroller_)
 {
-    updateTimer = new QTimer();
-
     QPalette pal = palette();
-    pal.setColor(QPalette::Background, backgroundColor);
+    pal.setColor(QPalette::Background,
+                 Constants::BACKGROUND_COLOR);
     setPalette(pal);
-
     setAutoFillBackground(true);
-    setMinimumSize(800, 600);
-    setMaximumSize(800, 600);
+
+    setFixedSize(Constants::SCREEN_WIDTH,
+                 Constants::SCREEN_HEIGHT);
 
     //TODO Game
 
-    connect(updateTimer, SIGNAL(timeout()),
+    connect(&updateTimer_, SIGNAL(timeout()),
             this, SLOT(updateGame()));
 
     //TODO need a separate init method for this
-    updateTimer->start(FPS_MILISECOND_INTERVAL);
+    //updateTimer_.start(Constants::UPDATE_INTERVAL_MSEC);
 }
 
 GameWidget::~GameWidget()
 {
-    delete updateTimer;
+}
+
+void GameWidget::start()
+{
+    game_.start();
+
+    updateTimer_.start(Constants::UPDATE_INTERVAL_MSEC);
 }
 
 void GameWidget::paintEvent(QPaintEvent*)
 {
     QPainter painter(this);
+
+    QPen pen(QBrush(Qt::black), 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
+
+    painter.setPen(pen);
+    painter.setRenderHint(QPainter::Antialiasing);
+
+    painter.setBrush(QBrush(Constants::BIRD_COLOR));
+    painter.drawConvexPolygon(game_.getBird().shape);
 }
 
 void GameWidget::keyPressEvent(QKeyEvent* event)
 {
-    //temporarily disable warnings
-    (void)event;
+    if(event->key() == Qt::Key_Space)
+    {
+        emit kcontroller_.flap();
+    }
 }
 
 void GameWidget::updateGame()
 {
-    //TODO add game logic update here
+    game_.update();
 
     update();
 }
