@@ -2,6 +2,7 @@
 #define GAMEWIDGET_HPP
 
 #include <QWidget>
+#include <QOpenGLWidget>
 #include <QTimer>
 #include <QKeyEvent>
 
@@ -9,7 +10,7 @@
 
 #include "Game.hpp"
 
-class GameWidget : public QWidget
+class GameWidget : public QOpenGLWidget
 {
 	Q_OBJECT
 public:
@@ -35,6 +36,7 @@ private:
 
 private:
     QTimer updateTimer_;
+    QTimer renderTimer_;
     GameLogic::Game game_;
 
 signals:

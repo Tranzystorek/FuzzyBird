@@ -1,16 +1,27 @@
 #include "GameWidget.hpp"
 
 #include <QPainter>
+#include <QDebug>
+#include <QSurfaceFormat>
 
 #include "Constants.hpp"
 
-GameWidget::GameWidget(QWidget* parent) : QWidget(parent), game_(&kcontroller_)
+GameWidget::GameWidget(QWidget* parent) : QOpenGLWidget(parent), game_(&kcontroller_)
 {
     QPalette pal = palette();
     pal.setColor(QPalette::Background,
                  Constants::BACKGROUND_COLOR);
     setPalette(pal);
     setAutoFillBackground(true);
+
+    qInfo().nospace() << "OpenGL Version: " << this->format().majorVersion()
+                       << "." << this->format().minorVersion();
+
+    if(this->format().swapInterval() != 1)
+    {
+        qWarning() << "Vertical sync not available, setting approximate 60Hz refresh rate";
+        updateTimer_.setInterval(Constants::UPDATE_INTERVAL_MSEC);
+    }
 
     setFixedSize(Constants::SCREEN_WIDTH,
                  Constants::SCREEN_HEIGHT);
@@ -32,7 +43,8 @@ void GameWidget::start()
 {
     game_.start();
 
-    updateTimer_.start(Constants::UPDATE_INTERVAL_MSEC);
+    renderTimer_.start();
+    updateTimer_.start();
 }
 
 void GameWidget::paintEvent(QPaintEvent*)
@@ -45,7 +57,17 @@ void GameWidget::paintEvent(QPaintEvent*)
     painter.setRenderHint(QPainter::Antialiasing);
 
     painter.setBrush(QBrush(Constants::BIRD_COLOR));
-    painter.drawConvexPolygon(game_.getBird().shape);
+
+    const GameLogic::Bird& bird = game_.getBird();
+    const QPointF& bct = bird.shape.center();
+
+    painter.save();
+    painter.translate(bct.x(), bct.y());
+    painter.rotate(bird.rotation);
+    //painter.drawConvexPolygon(game_.getBird().shape);
+    painter.drawRect(-bct.x(), -bct.y(),
+                     bird.shape.width(), bird.shape.height());
+    painter.restore();
 }
 
 void GameWidget::keyPressEvent(QKeyEvent* event)

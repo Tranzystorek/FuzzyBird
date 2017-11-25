@@ -22,7 +22,7 @@ struct Bird
     void setRotation(qreal);
     void setY(qreal);
 
-    QPolygonF shape;
+    QRectF shape;
     QPointF origin;
     qreal rotation;
 };
