@@ -36,7 +36,6 @@ private:
 
 private:
     QTimer updateTimer_;
-    QTimer renderTimer_;
     GameLogic::Game game_;
 
 signals:

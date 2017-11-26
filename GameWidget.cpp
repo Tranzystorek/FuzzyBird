@@ -43,7 +43,6 @@ void GameWidget::start()
 {
     game_.start();
 
-    renderTimer_.start();
     updateTimer_.start();
 }
 
@@ -62,11 +61,10 @@ void GameWidget::paintEvent(QPaintEvent*)
     const QPointF& bct = bird.shape.center();
 
     painter.save();
-    painter.translate(bct.x(), bct.y());
+    painter.translate(bct);
     painter.rotate(bird.rotation);
-    //painter.drawConvexPolygon(game_.getBird().shape);
-    painter.drawRect(-bct.x(), -bct.y(),
-                     bird.shape.width(), bird.shape.height());
+    painter.translate(-bct.x(), -bct.y());
+    painter.drawRect(bird.shape);
     painter.restore();
 }
 
