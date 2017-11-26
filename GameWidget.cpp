@@ -30,9 +30,6 @@ GameWidget::GameWidget(QWidget* parent) : QOpenGLWidget(parent), game_(&kcontrol
 
     connect(&updateTimer_, SIGNAL(timeout()),
             this, SLOT(updateGame()));
-
-    //TODO need a separate init method for this
-    //updateTimer_.start(Constants::UPDATE_INTERVAL_MSEC);
 }
 
 GameWidget::~GameWidget()
