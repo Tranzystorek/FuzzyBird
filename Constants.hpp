@@ -12,11 +12,11 @@ const QColor BACKGROUND_COLOR = QColor(111, 198, 207);
 const int SCREEN_WIDTH = 800;
 const int SCREEN_HEIGHT = 600;
 
-const int FPS = 30;
+const int FPS = 60;
 const int UPDATE_INTERVAL_MSEC = 1000 / FPS;
 
 const int FLIGHT_DURATION_MSEC = 100;
-const int HOVER_DURATION_MSEC = 40;
+const int HOVER_DURATION_MSEC = 50;
 
 const qreal FALLING_SPEED = 700.;
 const qreal FLIGHT_SPEED = 1500.;

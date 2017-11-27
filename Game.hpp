@@ -19,11 +19,8 @@ struct Pipe
 struct Bird
 {
     Bird(qreal x, qreal y, qreal w, qreal h);
-    void setRotation(qreal);
-    void setY(qreal);
 
-    QPolygonF shape;
-    QPointF origin;
+    QRectF shape;
     qreal rotation;
 };
 

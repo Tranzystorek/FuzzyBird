@@ -22,7 +22,8 @@ void GameLogic::Game::start()
 void GameLogic::Game::update()
 {
     qreal dt = mainTimer_.restart() / 1000.;
-    qreal bird_y = bird_.origin.y();
+    QPointF bird_ct = bird_.shape.center();
+    qreal bird_y = bird_ct.y();
     qreal bird_r = bird_.rotation;
 
     if(birdState_ == GameLogic::FALLING)
@@ -61,8 +62,10 @@ void GameLogic::Game::update()
             birdState_ = FALLING;
     }
 
-    bird_.setY(bird_y);
-    bird_.setRotation(bird_r);
+    bird_ct.setY(bird_y);
+    bird_.shape.moveCenter(bird_ct);
+
+    bird_.rotation = bird_r;
 }
 
 void GameLogic::Game::doFlap()
@@ -82,35 +85,8 @@ const QList<GameLogic::Pipe>& GameLogic::Game::getPipes() const
 }
 
 GameLogic::Bird::Bird(qreal x, qreal y, qreal w, qreal h)
-    : origin(x, y),
+    : shape(x-w/2, y-w/2, w, h),
       rotation(0.)
 {
-    qreal dx = w / 2;
-    qreal dy = h / 2;
 
-    shape << QPointF(x-dx, y-dy) << QPointF(x+dx, y-dy)
-          << QPointF(x+dx, y+dy) << QPointF(x-dx, y+dy);
-}
-
-void GameLogic::Bird::setRotation(qreal rot)
-{
-    qreal dr = rot - rotation;
-    qreal ox = origin.x();
-    qreal oy = origin.y();
-
-    rotation = rot;
-
-    shape = QTransform()
-            .translate(ox, oy)
-            .rotate(dr)
-            .translate(-ox, -oy)
-            .map(shape);
-}
-
-void GameLogic::Bird::setY(qreal y)
-{
-    qreal dy = y - origin.y();
-    origin.ry() = y;
-
-    shape.translate(0., dy);
 }
