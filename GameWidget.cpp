@@ -52,6 +52,17 @@ void GameWidget::paintEvent(QPaintEvent*)
     painter.setPen(pen);
     painter.setRenderHint(QPainter::Antialiasing);
 
+    //paint the pipes
+    painter.setBrush(QBrush(Constants::PIPE_COLOR));
+
+    auto& pipes = game_.getPipes();
+    for(auto& p : pipes)
+    {
+        painter.drawRect(p.lower);
+        painter.drawRect(p.upper);
+    }
+
+    //paint the bird
     painter.setBrush(QBrush(Constants::BIRD_COLOR));
 
     const GameLogic::Bird& bird = game_.getBird();

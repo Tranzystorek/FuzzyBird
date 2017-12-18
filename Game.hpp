@@ -12,6 +12,10 @@ namespace GameLogic
 {
 struct Pipe
 {
+    Pipe(qreal hole_altitude);
+
+    void move(qreal dx);
+
     QRectF upper;
     QRectF lower;
 };
@@ -31,6 +35,15 @@ enum BirdState
     FALLING
 };
 
+class PipeGenerator
+{
+public:
+    Pipe generate();
+
+private:
+    qreal current_alt_;
+};
+
 class Game : public Receiver
 {
 public:
@@ -48,10 +61,12 @@ private:
     Bird bird_;
     BirdState birdState_;
     QList<Pipe> pipes_;
+    PipeGenerator pgen_;
 
     QTime mainTimer_;
     QTime flightTimer_;
     QTime hoverTimer_;
+    QTime pgenTimer_;
 };
 }
 

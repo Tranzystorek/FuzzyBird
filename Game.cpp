@@ -1,6 +1,8 @@
 #include "Game.hpp"
 
 #include <QTransform>
+#include <cstdlib>
+#include <ctime>
 
 #include "Constants.hpp"
 
@@ -14,8 +16,13 @@ GameLogic::Game::Game(Controller* controller)
 
 void GameLogic::Game::start()
 {
+    srand(time(NULL));
+
+    pipes_.append(pgen_.generate());
+
     mainTimer_.start();
     hoverTimer_.start();
+    pgenTimer_.start();
     birdState_ = GameLogic::HOVERING;
 }
 
@@ -25,6 +32,17 @@ void GameLogic::Game::update()
     QPointF bird_ct = bird_.shape.center();
     qreal bird_y = bird_ct.y();
     qreal bird_r = bird_.rotation;
+
+    //pipe movement
+    for(auto& p : pipes_)
+        p.move(-dt * Constants::PIPE_SPEED);
+
+    if(pipes_.front().lower.x() < -Constants::PIPE_WIDTH)
+        pipes_.removeFirst();
+
+    //pipe generation
+    if(Constants::SCREEN_WIDTH - Constants::PIPE_WIDTH - pipes_.back().lower.x() > Constants::PIPE_SPACE_BETWEEN)
+        pipes_.append(pgen_.generate());
 
     if(birdState_ == GameLogic::FALLING)
     {
@@ -89,4 +107,25 @@ GameLogic::Bird::Bird(qreal x, qreal y, qreal w, qreal h)
       rotation(0.)
 {
 
+}
+
+GameLogic::Pipe::Pipe(qreal hole_altitude)
+{
+    lower = QRectF(Constants::SCREEN_WIDTH, hole_altitude + Constants::PIPE_SPACING,
+                   Constants::PIPE_WIDTH, Constants::SCREEN_HEIGHT - hole_altitude - Constants::PIPE_SPACING);
+
+    upper = QRectF(Constants::SCREEN_WIDTH, 0.,
+                   Constants::PIPE_WIDTH, hole_altitude);
+}
+
+void GameLogic::Pipe::move(qreal dx)
+{
+    upper.translate(dx, 0.);
+    lower.translate(dx, 0.);
+}
+
+GameLogic::Pipe GameLogic::PipeGenerator::generate()
+{
+    return Pipe(rand() % (Constants::HOLE_MAX_ALT - Constants::HOLE_MIN_ALT)
+                + Constants::HOLE_MIN_ALT);
 }

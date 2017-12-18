@@ -18,6 +18,9 @@ const int UPDATE_INTERVAL_MSEC = 1000 / FPS;
 const int FLIGHT_DURATION_MSEC = 100;
 const int HOVER_DURATION_MSEC = 50;
 
+const qreal PIPE_SPACE_BETWEEN = 240.;
+const qreal PIPE_SPEED = 300.;
+
 const qreal FALLING_SPEED = 700.;
 const qreal FLIGHT_SPEED = 1500.;
 
@@ -35,6 +38,9 @@ const qreal BIRD_HOVER_ROTATION_SPEED = 200.;
 
 const qreal PIPE_WIDTH = 80.;
 const qreal PIPE_SPACING = 180.;
+
+const int HOLE_MIN_ALT = Constants::SCREEN_HEIGHT / 10;
+const int HOLE_MAX_ALT = 9 * Constants::SCREEN_HEIGHT / 10 - Constants::PIPE_SPACING;
 }
 
 #endif // CONSTANTS_HPP
