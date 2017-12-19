@@ -26,6 +26,7 @@ public:
 
 public:
     void start();
+    int getGameScore() const {return game_.getScore();}
 
 protected:
 	void paintEvent(QPaintEvent*) override;
@@ -39,6 +40,7 @@ private:
     GameLogic::Game game_;
 
 signals:
+    void gameOver();
 
 public slots:
 	void updateGame();

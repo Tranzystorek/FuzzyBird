@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QStackedWidget>
 
+#include "GameWidget.hpp"
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -15,12 +17,18 @@ public:
 public slots:
     void startPlayerGame();
     void startAiGame();
+    void startLastGameType();
+    void showGameOver();
+    void goBackToMenu();
 
 private:
     QStackedWidget* manager_;
 
     int menuIndex_;
     int gameIndex_;
+    int goIndex_;
+
+    GameWidget::GameMode lastGameMode_;
 };
 
 #endif // MAINWINDOW_HPP

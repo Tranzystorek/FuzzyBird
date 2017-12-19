@@ -30,7 +30,8 @@ SOURCES += \
     GameWidget.cpp \
     KeyboardController.cpp \
     Receiver.cpp \
-    Game.cpp
+    Game.cpp \
+    GameOverWidget.cpp
 
 HEADERS += \
         MainWindow.hpp \
@@ -40,4 +41,5 @@ HEADERS += \
     KeyboardController.hpp \
     Receiver.hpp \
     Game.hpp \
-    Constants.hpp
+    Constants.hpp \
+    GameOverWidget.hpp

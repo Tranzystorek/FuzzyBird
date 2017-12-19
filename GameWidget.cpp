@@ -74,11 +74,18 @@ void GameWidget::paintEvent(QPaintEvent*)
     painter.translate(-bct.x(), -bct.y());
     painter.drawRect(bird.shape);
     painter.restore();
+
+    //paint game score
+    painter.setPen(QPen(Constants::SCORE_COLOR));
+    painter.setFont(Constants::SCORE_FONT);
+
+    painter.drawText(Constants::SCORE_X, Constants::SCORE_Y,
+                     QString::number(game_.getScore()));
 }
 
 void GameWidget::keyPressEvent(QKeyEvent* event)
 {
-    if(event->key() == Qt::Key_Space)
+    if(event->key() == Qt::Key_Space && !event->isAutoRepeat())
     {
         emit kcontroller_.flap();
     }
@@ -87,6 +94,12 @@ void GameWidget::keyPressEvent(QKeyEvent* event)
 void GameWidget::updateGame()
 {
     game_.update();
-
     update();
+
+    if(game_.isOver())
+    {
+        updateTimer_.stop();
+
+        emit gameOver();
+    }
 }

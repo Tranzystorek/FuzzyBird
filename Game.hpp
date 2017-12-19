@@ -57,16 +57,23 @@ public:
     const Bird& getBird() const;
     const QList<Pipe>& getPipes() const;
 
+    bool isOver() const {return gameover_;}
+    int getScore() const {return score_;}
+
 private:
     Bird bird_;
     BirdState birdState_;
     QList<Pipe> pipes_;
     PipeGenerator pgen_;
 
+    bool bird_ahead_;
+    bool gameover_;
+
+    int score_;
+
     QTime mainTimer_;
     QTime flightTimer_;
     QTime hoverTimer_;
-    QTime pgenTimer_;
 };
 }
 
