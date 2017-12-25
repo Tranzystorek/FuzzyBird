@@ -24,24 +24,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        main.cpp \
-        MainWindow.cpp \
-    MenuWidget.cpp \
-    GameWidget.cpp \
-    KeyboardController.cpp \
-    Receiver.cpp \
-    Game.cpp \
-    GameOverWidget.cpp \
-    AIController.cpp
+		src/main.cpp \
+		src/MainWindow.cpp \
+	src/MenuWidget.cpp \
+	src/GameWidget.cpp \
+	src/KeyboardController.cpp \
+	src/Receiver.cpp \
+	src/Game.cpp \
+	src/GameOverWidget.cpp \
+	src/AIController.cpp
 
 HEADERS += \
-        MainWindow.hpp \
-    MenuWidget.hpp \
-    GameWidget.hpp \
-    Controller.hpp \
-    KeyboardController.hpp \
-    Receiver.hpp \
-    Game.hpp \
-    Constants.hpp \
-    GameOverWidget.hpp \
-    AIController.hpp
+		include/MainWindow.hpp \
+	include/MenuWidget.hpp \
+	include/GameWidget.hpp \
+	include/Controller.hpp \
+	include/KeyboardController.hpp \
+	include/Receiver.hpp \
+	include/Game.hpp \
+	include/Constants.hpp \
+	include/GameOverWidget.hpp \
+	include/AIController.hpp
