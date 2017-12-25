@@ -25,6 +25,10 @@ const int UPDATE_INTERVAL_MSEC = 1000 / FPS;
 const int FLIGHT_DURATION_MSEC = 230;
 const int HOVER_DURATION_MSEC = 150;
 
+//bird simulates jumping in the air with time-based slowdown
+//this constant makes up for down-pull effects resulting from this mechanics
+const qreal SLOWDOWN_LIMITER = 2.;
+
 const qreal PIPE_SPACE_BETWEEN = 240.;
 const qreal PIPE_SPEED = 200.;
 

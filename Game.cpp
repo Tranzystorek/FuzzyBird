@@ -71,19 +71,25 @@ void GameLogic::Game::update()
 
     else if(birdState_ == GameLogic::FLYING)
     {
-        bird_y -= dt * Constants::FLIGHT_SPEED;
-
-        bird_r -= dt * Constants::BIRD_CCW_ROTATION_SPEED;
-
-        if(bird_r < Constants::COUNTERCLOCKWISE_ROTATION_DEG)
-            bird_r = Constants::COUNTERCLOCKWISE_ROTATION_DEG;
-
         if(flight_elapsed > Constants::FLIGHT_DURATION_MSEC)
         {
             //hoverTimer_.restart();
             //birdState_ = GameLogic::HOVERING;
 
             birdState_ = GameLogic::FALLING;
+        }
+
+        else
+        {
+            qreal slowdown = Constants::SLOWDOWN_LIMITER *
+                    (Constants::FLIGHT_DURATION_MSEC - flight_elapsed) / Constants::FLIGHT_DURATION_MSEC;
+
+            bird_y -= dt * Constants::FLIGHT_SPEED * slowdown;
+
+            bird_r -= dt * Constants::BIRD_CCW_ROTATION_SPEED;
+
+            if(bird_r < Constants::COUNTERCLOCKWISE_ROTATION_DEG)
+                bird_r = Constants::COUNTERCLOCKWISE_ROTATION_DEG;
         }
     }
 
