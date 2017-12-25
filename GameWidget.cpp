@@ -36,8 +36,21 @@ GameWidget::~GameWidget()
 {
 }
 
-void GameWidget::start()
+void GameWidget::start(GameMode mode)
 {
+    gmode_ = mode;
+
+    switch(gmode_)
+    {
+    case GameMode::PLAYER_MODE:
+        game_.setController(&kcontroller_);
+        break;
+
+    case GameMode::AI_MODE:
+        game_.setController(&aicontroller_);
+        break;
+    }
+
     game_.start();
 
     updateTimer_.start();
@@ -85,7 +98,9 @@ void GameWidget::paintEvent(QPaintEvent*)
 
 void GameWidget::keyPressEvent(QKeyEvent* event)
 {
-    if(event->key() == Qt::Key_Space && !event->isAutoRepeat())
+    if(gmode_ == GameMode::PLAYER_MODE &&
+            event->key() == Qt::Key_Space &&
+            !event->isAutoRepeat())
     {
         emit kcontroller_.flap();
     }

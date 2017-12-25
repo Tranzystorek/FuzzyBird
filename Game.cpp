@@ -109,9 +109,11 @@ void GameLogic::Game::update()
        bird_.shape.top() < 0.)
         gameover_ = true;
 
-    //pipe collision
+    //pipe collision + send signals to controller
     if(bird_ahead_)
     {
+        emit sendData(pipes_[1].hole_mid - bird_ct.y());
+
         if(bird_.shape.intersects(pipes_[1].upper) ||
            bird_.shape.intersects(pipes_[1].lower))
             gameover_ = true;
@@ -119,6 +121,8 @@ void GameLogic::Game::update()
 
     else
     {
+        emit sendData(pipes_.front().hole_mid - bird_ct.y());
+
         if(bird_.shape.left() > pipes_[0].lower.right())
         {
             bird_ahead_ = true;
@@ -163,6 +167,8 @@ GameLogic::Pipe::Pipe(qreal hole_altitude)
 
     upper = QRectF(Constants::SCREEN_WIDTH, 0.,
                    Constants::PIPE_WIDTH, hole_altitude);
+
+    hole_mid = hole_altitude + Constants::PIPE_SPACING * (2. / 3.);
 }
 
 void GameLogic::Pipe::move(qreal dx)

@@ -5,7 +5,7 @@ KeyboardController::KeyboardController()
 
 }
 
-void KeyboardController::receiveData()
+void KeyboardController::receiveData(qreal)
 {
 
 }

@@ -16,7 +16,7 @@ private:
     Controller* controller_;
 
 signals:
-    void sendData();
+    void sendData(qreal);
 
 public slots:
     virtual void doFlap() = 0;

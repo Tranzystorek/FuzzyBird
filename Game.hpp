@@ -16,6 +16,8 @@ struct Pipe
 
     void move(qreal dx);
 
+    qreal hole_mid;
+
     QRectF upper;
     QRectF lower;
 };

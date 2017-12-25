@@ -7,6 +7,7 @@
 #include <QKeyEvent>
 
 #include "KeyboardController.hpp"
+#include "AIController.hpp"
 
 #include "Game.hpp"
 
@@ -25,7 +26,7 @@ public:
 	};
 
 public:
-    void start();
+    void start(GameMode);
     int getGameScore() const {return game_.getScore();}
 
 protected:
@@ -34,6 +35,9 @@ protected:
 
 private:
     KeyboardController kcontroller_;
+    AIController aicontroller_;
+
+    GameMode gmode_;
 
 private:
     QTimer updateTimer_;

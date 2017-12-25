@@ -50,14 +50,15 @@ void MainWindow::startPlayerGame()
     lastGameMode_ = GameWidget::PLAYER_MODE;
 
     manager_->setCurrentIndex(gameIndex_);
-    ((GameWidget*)(manager_->currentWidget()))->start();
+    ((GameWidget*)(manager_->currentWidget()))->start(GameWidget::PLAYER_MODE);
 }
 
 void MainWindow::startAiGame()
 {
     lastGameMode_ = GameWidget::AI_MODE;
 
-    //TODO ai mode
+    manager_->setCurrentIndex(gameIndex_);
+    ((GameWidget*)(manager_->currentWidget()))->start(GameWidget::AI_MODE);
 }
 
 void MainWindow::startLastGameType()

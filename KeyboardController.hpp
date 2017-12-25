@@ -8,7 +8,7 @@ class KeyboardController : public Controller
 public:
     KeyboardController();
 
-    void receiveData() override;
+    void receiveData(qreal) override;
 };
 
 #endif // KEYBOARDCONTROLLER_HPP

@@ -31,7 +31,8 @@ SOURCES += \
     KeyboardController.cpp \
     Receiver.cpp \
     Game.cpp \
-    GameOverWidget.cpp
+    GameOverWidget.cpp \
+    AIController.cpp
 
 HEADERS += \
         MainWindow.hpp \
@@ -42,4 +43,5 @@ HEADERS += \
     Receiver.hpp \
     Game.hpp \
     Constants.hpp \
-    GameOverWidget.hpp
+    GameOverWidget.hpp \
+    AIController.hpp
