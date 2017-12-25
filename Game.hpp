@@ -5,7 +5,7 @@
 #include <QRectF>
 #include <QPolygonF>
 #include <QPointF>
-#include <QTime>
+#include <QElapsedTimer>
 #include "Receiver.hpp"
 
 namespace GameLogic
@@ -73,9 +73,9 @@ private:
 
     int score_;
 
-    QTime mainTimer_;
-    QTime flightTimer_;
-    QTime hoverTimer_;
+    QElapsedTimer mainTimer_;
+    QElapsedTimer flightTimer_;
+    QElapsedTimer hoverTimer_;
 };
 }
 
