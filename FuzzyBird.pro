@@ -53,7 +53,9 @@ SOURCES += \
     fuzlog/src/engine/Aggregator.cpp \
     fuzlog/src/engine/Bisector.cpp \
     fuzlog/src/engine/Centroid.cpp \
-    fuzlog/src/engine/Maximum.cpp
+    fuzlog/src/engine/Maximum.cpp \
+    fuzlog/src/engine/AlgebraicProduct.cpp \
+    fuzlog/src/engine/BoundedSum.cpp
 
 HEADERS += \
 		include/MainWindow.hpp \
@@ -91,4 +93,6 @@ HEADERS += \
     fuzlog/include/Aggregator.hpp \
     fuzlog/include/Bisector.hpp \
     fuzlog/include/Centroid.hpp \
-    fuzlog/include/Maximum.hpp
+    fuzlog/include/Maximum.hpp \
+    fuzlog/include/AlgebraicProduct.hpp \
+    fuzlog/include/BoundedSum.hpp

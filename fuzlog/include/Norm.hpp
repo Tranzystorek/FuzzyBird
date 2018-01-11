@@ -26,18 +26,10 @@ public:
 };
 
 class TNorm : public Norm
-{
-public:
-    TNorm() {}
-    virtual ~TNorm() {}
-};
+{};
 
 class SNorm : public Norm
-{
-public:
-    SNorm() {}
-    virtual ~SNorm() {}
-};
+{};
 
 }
 
