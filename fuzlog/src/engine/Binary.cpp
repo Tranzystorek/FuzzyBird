@@ -1,5 +1,7 @@
 #include "Binary.hpp"
 
+#include "utility.h"
+
 using namespace flogic;
 
 Binary::Binary(const std::string& name, Scalar xslope, Scalar h, Binary::Direction dir, Binary::Inclusivity incl)
@@ -29,13 +31,13 @@ Scalar Binary::membership_incl(Scalar x)
     switch(dir_)
     {
     case LEFT:
-        if(x > xslope_)
+        if(Op::isGt(x, xslope_))
             return 0.;
         else
             return height_;
 
     case RIGHT:
-        if(x < xslope_)
+        if(Op::isLt(x, xslope_))
             return 0.;
         else
             return height_;
@@ -47,13 +49,13 @@ Scalar Binary::membership_excl(Scalar x)
     switch(dir_)
     {
     case LEFT:
-        if(x < xslope_)
+        if(Op::isLt(x, xslope_))
             return height_;
         else
             return 0.;
 
     case RIGHT:
-        if(x > xslope_)
+        if(Op::isGt(x, xslope_))
             return height_;
         else
             return 0.;

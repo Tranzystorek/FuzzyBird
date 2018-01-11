@@ -19,11 +19,11 @@ Trapezoid::Trapezoid(const std::string& name, Scalar xmin, Scalar xmax, Scalar x
 
 Scalar Trapezoid::membership(Scalar x)
 {
-    if(x < xmin_ || x > xmax_)
+    if(Op::isLt(x, xmin_) || Op::isGt(x, xmax_))
         return 0.;
-    else if(x < xpleft_)
+    else if(Op::isLt(x, xpleft_))
         return ((x - xmin_) / left_) * height_;
-    else if(x > xpright_)
+    else if(Op::isGt(x, xpright_))
         return ((xmax_ - x) / right_) * height_;
     else
         return height_;
