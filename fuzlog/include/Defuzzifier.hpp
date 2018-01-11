@@ -3,12 +3,17 @@
 
 #include "fuzlog.h"
 
+#include "Term.hpp"
+
 namespace flogic {
 
 class Defuzzifier
 {
 public:
-    Defuzzifier();
+    Defuzzifier() {}
+    virtual ~Defuzzifier() {}
+
+    virtual Scalar defuzzify(const TermObject& term, const Range& r) = 0;
 };
 
 }

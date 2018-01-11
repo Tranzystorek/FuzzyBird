@@ -40,7 +40,6 @@ SOURCES += \
 	fuzlog/src/engine/EngineFactory.cpp \
 	fuzlog/src/engine/Engine.cpp \
 	fuzlog/src/engine/EngineProperties.cpp \
-    fuzlog/src/engine/Defuzzifier.cpp \
     fuzlog/src/engine/InputVar.cpp \
 	fuzlog/src/engine/OutputVar.cpp \
     fuzlog/src/engine/Triangle.cpp \
@@ -49,7 +48,12 @@ SOURCES += \
     fuzlog/src/engine/Binary.cpp \
     fuzlog/src/engine/Ramp.cpp \
     fuzlog/src/engine/RuleBlock.cpp \
-    fuzlog/src/engine/AndExpr.cpp
+    fuzlog/src/engine/AndExpr.cpp \
+    fuzlog/src/engine/Minimum.cpp \
+    fuzlog/src/engine/Aggregator.cpp \
+    fuzlog/src/engine/Bisector.cpp \
+    fuzlog/src/engine/Centroid.cpp \
+    fuzlog/src/engine/Maximum.cpp
 
 HEADERS += \
 		include/MainWindow.hpp \
@@ -81,4 +85,10 @@ HEADERS += \
     fuzlog/include/Ramp.hpp \
     fuzlog/include/RuleBlock.hpp \
     fuzlog/include/AndExpr.hpp \
-    fuzlog/include/Expression.hpp
+    fuzlog/include/Expression.hpp \
+    fuzlog/include/Minimum.hpp \
+    fuzlog/include/utility.h \
+    fuzlog/include/Aggregator.hpp \
+    fuzlog/include/Bisector.hpp \
+    fuzlog/include/Centroid.hpp \
+    fuzlog/include/Maximum.hpp

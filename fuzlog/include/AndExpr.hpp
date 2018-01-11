@@ -4,17 +4,20 @@
 #include "fuzlog.h"
 
 #include <vector>
+#include <string>
 
 #include "InputVar.hpp"
+#include "Term.hpp"
+#include "Norm.hpp"
 
 namespace flogic {
 
 struct TermBinding
 {
-    TermBinding(int in, int term) : invar(in), term(term) {}
+    TermBinding(const std::string& in, const std::string& term) : invar(in), term(term) {}
 
-    int invar;
-    int term;
+    std::string invar;
+    std::string term;
 };
 
 class AndExpr
@@ -22,10 +25,13 @@ class AndExpr
 public:
     AndExpr(const std::vector<TermBinding>& binds);
 
-    Scalar evaluate(const std::vector<InputVar>& vars);
+    Scalar evaluate(const std::vector<InputVar>& vars,
+                    const InputNames& inputnames);
 
 private:
     std::vector<TermBinding> bindings_;
+
+    TNormObject tnorm_;
 };
 
 }

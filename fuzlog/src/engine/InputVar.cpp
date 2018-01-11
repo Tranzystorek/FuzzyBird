@@ -8,7 +8,8 @@ using namespace flogic;
 InputVar::InputVar(const std::string& name, std::vector<TermObject>&& terms)
     : name_(name),
       terms_(std::move(terms)),
-      xin_(0.)
+      xin_(0.),
+      range_(0., 0.) //TODO
 {
     int i = 0;
 
@@ -32,7 +33,12 @@ void InputVar::setInput(Scalar input)
     xin_ = input;
 }
 
-const TermObject& InputVar::getTerm(const std::string& name)
+Scalar InputVar::getInput() const
+{
+    return xin_;
+}
+
+const TermObject& InputVar::getTerm(const std::string& name) const
 {
     return terms_[tnames_.at(name)];
 }

@@ -6,8 +6,6 @@
 #include <memory>
 #include <string>
 
-#include "Engine.hpp"
-
 namespace flogic {
 
 class Term;

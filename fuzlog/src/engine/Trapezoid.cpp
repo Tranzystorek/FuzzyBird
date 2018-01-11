@@ -1,5 +1,7 @@
 #include "Trapezoid.hpp"
 
+#include "utility.h"
+
 using namespace flogic;
 
 Trapezoid::Trapezoid(const std::string& name, Scalar xmin, Scalar xmax, Scalar xpl, Scalar xpr, Scalar h)

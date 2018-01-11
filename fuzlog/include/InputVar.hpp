@@ -11,12 +11,6 @@
 
 namespace flogic {
 
-struct Range
-{
-    Scalar lower;
-    Scalar higher;
-};
-
 class InputVar
 {
 public:
@@ -27,16 +21,18 @@ public:
     std::vector<Scalar> getActivationValues() const;
 
     void setInput(Scalar input);
-    const TermObject& getTerm(const std::string& name);
+    Scalar getInput() const;
+
+    const TermObject& getTerm(const std::string& name) const;
 
 private:
     std::string name_;
     std::vector<TermObject> terms_;
     TermNames tnames_;
 
-    Range range_;
-
     Scalar xin_;
+
+    Range range_;
 };
 
 }

@@ -5,12 +5,16 @@
 
 #include <memory>
 
-#include "Engine.hpp"
-
 namespace flogic {
 
 class Norm;
 using NormObject = std::unique_ptr<Norm>;
+
+class TNorm;
+using TNormObject = std::unique_ptr<TNorm>;
+
+class SNorm;
+using SNormObject = std::unique_ptr<SNorm>;
 
 class Norm
 {
@@ -21,11 +25,19 @@ public:
     virtual Scalar compute(Scalar a, Scalar b) = 0;
 };
 
-class TNorm : Norm
-{};
+class TNorm : public Norm
+{
+public:
+    TNorm() {}
+    virtual ~TNorm() {}
+};
 
-class SNorm : Norm
-{};
+class SNorm : public Norm
+{
+public:
+    SNorm() {}
+    virtual ~SNorm() {}
+};
 
 }
 
