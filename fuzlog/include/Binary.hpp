@@ -16,11 +16,11 @@ public:
 public:
     Binary(const std::string& name, Scalar xslope, Scalar h, Direction dir, Inclusivity incl = Inclusivity::INCLUSIVE);
 
-    Scalar membership(Scalar x);
+    Scalar membership(Scalar x) const;
 
 private:
-    Scalar membership_incl(Scalar x);
-    Scalar membership_excl(Scalar x);
+    Scalar membership_incl(Scalar x) const;
+    Scalar membership_excl(Scalar x) const;
 
 private:
     Scalar xslope_;

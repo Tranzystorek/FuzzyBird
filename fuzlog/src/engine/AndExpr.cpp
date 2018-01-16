@@ -2,14 +2,15 @@
 
 using namespace flogic;
 
-AndExpr::AndExpr(const std::vector<TermBinding>& binds)
-    : bindings_(binds)
+AndExpr::AndExpr(const std::vector<TermBinding>& binds, TNorm* tnorm)
+    : bindings_(binds),
+      tnorm_(tnorm)
 {
 
 }
 
 Scalar AndExpr::evaluate(const std::vector<InputVar>& vars,
-                         const InputNames& inputnames)
+                         const InputNames& inputnames) const
 {
     Scalar ret = 1.;
 

@@ -15,7 +15,7 @@ public:
 public:
     Ramp(const std::string& name, Scalar xmin, Scalar xmax, Scalar h, Direction dir);
 
-    Scalar membership(Scalar x);
+    Scalar membership(Scalar x) const;
 
 private:
     Scalar xmin_;

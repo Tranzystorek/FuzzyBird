@@ -17,9 +17,9 @@ Trapezoid::Trapezoid(const std::string& name, Scalar xmin, Scalar xmax, Scalar x
 
 }
 
-Scalar Trapezoid::membership(Scalar x)
+Scalar Trapezoid::membership(Scalar x) const
 {
-    if(Op::isLt(x, xmin_) || Op::isGt(x, xmax_))
+    if(Op::isLE(x, xmin_) || Op::isGE(x, xmax_))
         return 0.;
     else if(Op::isLt(x, xpleft_))
         return ((x - xmin_) / left_) * height_;

@@ -12,7 +12,7 @@ class Bisector : public Defuzzifier
 public:
     Bisector(int res);
 
-    Scalar defuzzify(const TermObject &term, const Range& r);
+    Scalar defuzzify(const Aggregator& term, const Range& r);
 
 private:
     int resolution_;

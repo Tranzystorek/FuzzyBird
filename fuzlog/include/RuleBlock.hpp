@@ -5,6 +5,8 @@
 
 #include <vector>
 
+#include "Aggregator.hpp"
+
 namespace flogic {
 
 struct Rule
@@ -18,12 +20,17 @@ struct Rule
 class RuleBlock
 {
 public:
-    RuleBlock(const std::vector<Rule>& rules);
+    RuleBlock();
+    RuleBlock(SNorm* snorm, std::vector<Implicator>&& rules);
 
-    const std::vector<Rule>& getRules() const;
+    //const std::vector<Implicator>& getRules() const;
+
+    void setActivations(const std::vector<Scalar>& acts);
+
+    const Aggregator& getAggregator() const;
 
 private:
-    std::vector<Rule> rules_;
+    Aggregator aggr_;
 };
 
 }

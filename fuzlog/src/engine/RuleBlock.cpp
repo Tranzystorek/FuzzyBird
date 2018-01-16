@@ -1,14 +1,32 @@
 #include "RuleBlock.hpp"
 
+#include <utility>
+
 using namespace flogic;
 
-RuleBlock::RuleBlock(const std::vector<Rule>& rules)
-    : rules_(rules)
+RuleBlock::RuleBlock()
 {
 
 }
 
-const std::vector<Rule>& RuleBlock::getRules() const
+RuleBlock::RuleBlock(SNorm* snorm, std::vector<Implicator>&& rules)
+    : aggr_(snorm,
+            std::forward<std::vector<Implicator>>(rules))
 {
-    return rules_;
+
+}
+
+//const std::vector<Implicator>& RuleBlock::getRules() const
+//{
+//    return rules_;
+//}
+
+void RuleBlock::setActivations(const std::vector<Scalar>& acts)
+{
+    aggr_.setActivations(acts);
+}
+
+const Aggregator& RuleBlock::getAggregator() const
+{
+    return aggr_;
 }

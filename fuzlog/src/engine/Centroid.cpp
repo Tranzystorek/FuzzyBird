@@ -8,7 +8,7 @@ Centroid::Centroid(int res)
 
 }
 
-Scalar Centroid::defuzzify(const TermObject& term, const Range& r)
+Scalar Centroid::defuzzify(const Aggregator& term, const Range& r)
 {
     Scalar step = (r.higher - r.lower) / resolution_;
     Scalar x = r.lower + step;
@@ -18,7 +18,7 @@ Scalar Centroid::defuzzify(const TermObject& term, const Range& r)
 
     for(int i=0; i < resolution_; ++i, x += step)
     {
-        const Scalar val = term->membership(x);
+        const Scalar val = term.membership(x);
 
         area += val;
         xcentroid += x * val;

@@ -1,5 +1,7 @@
 #include "Rectangle.hpp"
 
+#include "utility.h"
+
 using namespace flogic;
 
 Rectangle::Rectangle(const std::string& name, Scalar xmin, Scalar xmax, Scalar h)
@@ -11,7 +13,7 @@ Rectangle::Rectangle(const std::string& name, Scalar xmin, Scalar xmax, Scalar h
 
 }
 
-Scalar Rectangle::membership(Scalar x)
+Scalar Rectangle::membership(Scalar x) const
 {
     if(Op::isLt(x, xmin_) || Op::isGt(x, xmax_))
         return 0.;

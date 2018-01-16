@@ -8,6 +8,8 @@
 #include "ParserStates.hpp"
 #include "EngineProperties.hpp"
 
+namespace flogic {
+
 class Parser
 {
 public:
@@ -27,5 +29,7 @@ private:
 
     EngineProperties properties_;
 };
+
+}
 
 #endif // PARSER_HPP

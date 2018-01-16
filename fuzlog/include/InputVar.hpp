@@ -14,9 +14,7 @@ namespace flogic {
 class InputVar
 {
 public:
-    using TermNames = std::unordered_map<std::string, int>;
-public:
-    InputVar(const std::string& name, std::vector<TermObject>&& terms);
+    InputVar(const std::string& name, const Range& r, std::vector<TermObject>&& terms);
 
     std::vector<Scalar> getActivationValues() const;
 
@@ -30,9 +28,9 @@ private:
     std::vector<TermObject> terms_;
     TermNames tnames_;
 
-    Scalar xin_;
-
     Range range_;
+
+    Scalar xin_;
 };
 
 }

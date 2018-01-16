@@ -10,27 +10,34 @@
 #include "InputVar.hpp"
 #include "OutputVar.hpp"
 #include "AndExpr.hpp"
+#include "RuleBlock.hpp"
+#include "Defuzzifier.hpp"
 
 namespace flogic {
 
 class Engine
 {
-public:
+private:
     Engine();
 
+public:
     void setInput(Scalar v);
     Scalar getOutput();
 
     void process();
 
 private:
-    //Scalar input_;
-    //Scalar output_;
+    void activate();
+    void calculate();
 
+private:
     std::vector<InputVar> inputs_;
     InputNames inputnames_;
 
     std::vector<AndExpr> ands_;
+    RuleBlock ruleblock_;
+
+    DefuzzifierObject defuzz_;
 
     OutputVar output_;
 

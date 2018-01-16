@@ -14,7 +14,7 @@ Binary::Binary(const std::string& name, Scalar xslope, Scalar h, Binary::Directi
 
 }
 
-Scalar Binary::membership(Scalar x)
+Scalar Binary::membership(Scalar x) const
 {
     switch(incl_)
     {
@@ -26,7 +26,7 @@ Scalar Binary::membership(Scalar x)
     }
 }
 
-Scalar Binary::membership_incl(Scalar x)
+Scalar Binary::membership_incl(Scalar x) const
 {
     switch(dir_)
     {
@@ -44,7 +44,7 @@ Scalar Binary::membership_incl(Scalar x)
     }
 }
 
-Scalar Binary::membership_excl(Scalar x)
+Scalar Binary::membership_excl(Scalar x) const
 {
     switch(dir_)
     {

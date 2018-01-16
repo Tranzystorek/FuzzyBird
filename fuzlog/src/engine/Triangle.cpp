@@ -16,9 +16,9 @@ Triangle::Triangle(const std::string& name, Scalar xmin, Scalar xmax, Scalar xpe
 
 }
 
-Scalar Triangle::membership(Scalar x)
+Scalar Triangle::membership(Scalar x) const
 {
-    if(Op::isLt(x, xmin_) || Op::isGt(x, xmax_))
+    if(Op::isLE(x, xmin_) || Op::isGE(x, xmax_))
         return 0.;
     else if(Op::isLt(x, xpeak_))
         return ((x - xmin_) / left_) * height_;

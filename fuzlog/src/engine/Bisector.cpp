@@ -10,7 +10,7 @@ Bisector::Bisector(int res)
 
 }
 
-Scalar Bisector::defuzzify(const TermObject& term, const Range& r)
+Scalar Bisector::defuzzify(const Aggregator& term, const Range& r)
 {
     Scalar xRight = r.higher;
     Scalar xLeft = r.lower;
@@ -24,12 +24,12 @@ Scalar Bisector::defuzzify(const TermObject& term, const Range& r)
         if(Op::isLt(leftA, rightA))
         {
             xLeft += step;
-            leftA += term->membership(xLeft);
+            leftA += term.membership(xLeft);
         }
         else
         {
             xRight -= step;
-            rightA += term->membership(xRight);
+            rightA += term.membership(xRight);
         }
     }
 

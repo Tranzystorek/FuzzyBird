@@ -12,7 +12,7 @@ class Trapezoid : public Term
 public:
     Trapezoid(const std::string& name, Scalar xmin, Scalar xmax, Scalar xpl, Scalar xpr, Scalar h);
 
-    Scalar membership(Scalar x);
+    Scalar membership(Scalar x) const;
 
 private:
     Scalar xmin_;

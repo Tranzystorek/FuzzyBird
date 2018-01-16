@@ -10,12 +10,14 @@ namespace flogic {
 //common library type for scalar values
 using Scalar = double;
 
-//type for name maps
+//type aliases for name maps
 using InputNames = std::unordered_map<std::string, int>;
+using TermNames = std::unordered_map<std::string, int>;
 
 //struct for value range
 struct Range
 {
+    Range() : lower(0.), higher(0.) {}
     Range(Scalar l, Scalar h) : lower(l), higher(h) {}
 
     Scalar lower;

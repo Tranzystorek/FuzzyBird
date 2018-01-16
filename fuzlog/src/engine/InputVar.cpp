@@ -5,11 +5,11 @@
 
 using namespace flogic;
 
-InputVar::InputVar(const std::string& name, std::vector<TermObject>&& terms)
+InputVar::InputVar(const std::string& name, const Range& r, std::vector<TermObject>&& terms)
     : name_(name),
-      terms_(std::move(terms)),
-      xin_(0.),
-      range_(0., 0.) //TODO
+      terms_(std::forward<std::vector<TermObject>>(terms)),
+      range_(r),
+      xin_(0.)
 {
     int i = 0;
 

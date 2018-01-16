@@ -17,7 +17,7 @@ public:
     Term(const std::string& name) : name_(name) {}
     virtual ~Term() {}
 
-    virtual Scalar membership(Scalar x) = 0;
+    virtual Scalar membership(Scalar x) const = 0;
 
     const std::string& getName() const {return name_;}
 
