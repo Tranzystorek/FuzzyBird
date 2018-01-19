@@ -9,6 +9,18 @@ Engine::Engine()
     //TODO everything?
 }
 
+void Engine::setInput(const std::string& vname, Scalar v)
+{
+    InputVar& var = inputs_[inputnames_.at(vname)];
+
+    var.setInput(v);
+}
+
+Scalar Engine::getOutput()
+{
+    return output_.getOutput();
+}
+
 void Engine::process()
 {
     activate();

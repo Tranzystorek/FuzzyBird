@@ -27,9 +27,9 @@ EngineFactory::EngineFactory()
 
 }
 
-Engine EngineFactory::createEngine(const EngineProperties& props)
+Engine* EngineFactory::createEngine(const EngineProperties& props)
 {
-    Engine constructed;
+    Engine* constructed = new Engine();
 
     //TODO construction
 
@@ -46,10 +46,10 @@ Engine EngineFactory::createEngine(const EngineProperties& props)
             ++it;
         }
 
-        constructed.inputs_.emplace_back(var.name, var.range,
+        constructed->inputs_.emplace_back(var.name, var.range,
                                          std::move(terms));
 
-        constructed.inputnames_.emplace(var.name, varindex++);
+        constructed->inputnames_.emplace(var.name, varindex++);
     }
 
     //generate output variable
@@ -64,7 +64,7 @@ Engine EngineFactory::createEngine(const EngineProperties& props)
         ++it;
     }
 
-    constructed.output_ = OutputVar(outvar.name, outvar.range,
+    constructed->output_ = OutputVar(outvar.name, outvar.range,
                                     std::move(terms));
 
     //generate rules (andexprs + implicators in aggregator)
@@ -84,17 +84,17 @@ Engine EngineFactory::createEngine(const EngineProperties& props)
             ++it;
         }
 
-        constructed.ands_.emplace_back(binds, new Minimum());
+        constructed->ands_.emplace_back(binds, new Minimum());
 
         impls.emplace_back(TNormFactory::createTNorm(props.implication),
-                           constructed.output_.getTerm(rule.conclusion.tname).get());
+                           constructed->output_.getTerm(rule.conclusion.tname).get());
     }
 
-    constructed.ruleblock_ = RuleBlock(SNormFactory::createSNorm(props.aggregation),
+    constructed->ruleblock_ = RuleBlock(SNormFactory::createSNorm(props.aggregation),
                                        std::move(impls));
 
     //generate defuzzifier
-    constructed.defuzz_.reset(DefuzzifierFactory::createDefuzzifier(props.defuzzifier));
+    constructed->defuzz_.reset(DefuzzifierFactory::createDefuzzifier(props.defuzzifier));
 
     return constructed;
 }

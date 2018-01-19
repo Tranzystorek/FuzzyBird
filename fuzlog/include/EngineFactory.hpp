@@ -48,7 +48,7 @@ class EngineFactory
 public:
     EngineFactory();
 
-    static Engine createEngine(const EngineProperties& props);
+    static Engine* createEngine(const EngineProperties& props);
 };
 
 }

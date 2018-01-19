@@ -21,7 +21,7 @@ private:
     Engine();
 
 public:
-    void setInput(Scalar v);
+    void setInput(const std::string& vname, Scalar v);
     Scalar getOutput();
 
     void process();
