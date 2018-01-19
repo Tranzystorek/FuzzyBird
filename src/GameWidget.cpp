@@ -26,8 +26,6 @@ GameWidget::GameWidget(QWidget* parent) : QOpenGLWidget(parent), game_(&kcontrol
     setFixedSize(Constants::SCREEN_WIDTH,
                  Constants::SCREEN_HEIGHT);
 
-    //TODO Game
-
     connect(&updateTimer_, SIGNAL(timeout()),
             this, SLOT(updateGame()));
 }

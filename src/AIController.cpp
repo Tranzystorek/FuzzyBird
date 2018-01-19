@@ -131,18 +131,14 @@ AIController::AIController()
 
 void AIController::receiveData(qreal birdalt, qreal pipealt, qreal birdhor, qreal pipehor)
 {
-    //TODO add actual fuzzy controller
-    //if(diff < 0)
-    //    emit flap();
-
     qreal dalt = pipealt - birdalt - altmin_;
     qreal dhor = pipehor - birdhor;
 
     eng_->setInput("Altitude", dalt);
     eng_->setInput("XPos", dhor);
     eng_->process();
+
     flogic::Scalar out = eng_->getOutput();
-    std::cout << out << std::endl;
 
     if(out > 0.)
         emit flap();
