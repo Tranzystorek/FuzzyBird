@@ -10,7 +10,7 @@ signals:
     void flap();
 
 public slots:
-    virtual void receiveData(qreal) = 0;
+    virtual void receiveData(qreal, qreal, qreal, qreal) = 0;
 };
 
 #endif // CONTROLLER_H

@@ -112,7 +112,10 @@ void GameLogic::Game::update()
     //pipe collision + send signals to controller
     if(bird_ahead_)
     {
-        emit sendData(pipes_[1].hole_mid - bird_ct.y());
+        emit sendData(bird_.shape.bottom(),
+                      pipes_[1].lower.top(),
+                      bird_.shape.left(),
+                      pipes_[1].lower.right());
 
         if(bird_.shape.intersects(pipes_[1].upper) ||
            bird_.shape.intersects(pipes_[1].lower))
@@ -121,7 +124,10 @@ void GameLogic::Game::update()
 
     else
     {
-        emit sendData(pipes_.front().hole_mid - bird_ct.y());
+        emit sendData(bird_.shape.bottom(),
+                      pipes_.front().lower.top(),
+                      bird_.shape.left(),
+                      pipes_.front().lower.right());
 
         if(bird_.shape.left() > pipes_[0].lower.right())
         {

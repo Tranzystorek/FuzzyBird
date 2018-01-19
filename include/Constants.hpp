@@ -29,7 +29,7 @@ const int HOVER_DURATION_MSEC = 150;
 //this constant makes up for down-pull effects resulting from this mechanics
 const qreal SLOWDOWN_LIMITER = 2.;
 
-const qreal PIPE_SPACE_BETWEEN = 240.;
+const qreal PIPE_SPACE_BETWEEN = 200.;
 const qreal PIPE_SPEED = 200.;
 
 const qreal FALLING_SPEED = 400.;
@@ -47,8 +47,8 @@ const qreal BIRD_CCW_ROTATION_SPEED = 400.;
 const qreal BIRD_CW_ROTATION_SPEED = 200.;
 const qreal BIRD_HOVER_ROTATION_SPEED = 200.;
 
-const qreal PIPE_WIDTH = 80.;
-const qreal PIPE_SPACING = 180.;
+const qreal PIPE_WIDTH = 60.;
+const qreal PIPE_SPACING = 135.;
 
 const int HOLE_MIN_ALT = Constants::SCREEN_HEIGHT / 10;
 const int HOLE_MAX_ALT = 9 * Constants::SCREEN_HEIGHT / 10 - Constants::PIPE_SPACING;
