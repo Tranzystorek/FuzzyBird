@@ -9,7 +9,7 @@
 GameWidget::GameWidget(QWidget* parent) : QOpenGLWidget(parent), game_(&kcontroller_)
 {
     QPalette pal = palette();
-    pal.setColor(QPalette::Background,
+    pal.setColor(QPalette::Window,
                  Constants::BACKGROUND_COLOR);
     setPalette(pal);
     setAutoFillBackground(true);
@@ -96,7 +96,14 @@ void GameWidget::paintEvent(QPaintEvent*)
 
 void GameWidget::keyPressEvent(QKeyEvent* event)
 {
-    if(gmode_ == GameMode::PLAYER_MODE &&
+    if(event->key() == Qt::Key_Escape)
+    {
+        updateTimer_.stop();
+
+        emit returnToMenu();
+    }
+
+    else if(gmode_ == GameMode::PLAYER_MODE &&
             event->key() == Qt::Key_Space &&
             !event->isAutoRepeat())
     {

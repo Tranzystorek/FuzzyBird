@@ -45,6 +45,7 @@ private:
 
 signals:
     void gameOver();
+    void returnToMenu();
 
 public slots:
 	void updateGame();

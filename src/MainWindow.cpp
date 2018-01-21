@@ -33,6 +33,8 @@ MainWindow::MainWindow(QWidget* parent)
 
     connect(game, SIGNAL(gameOver()),
             this, SLOT(showGameOver()));
+    connect(game, SIGNAL(returnToMenu()),
+            this, SLOT(goBackToMenu()));
 
     connect(gameover, SIGNAL(retryButtonClicked()),
             this, SLOT(startLastGameType()));
