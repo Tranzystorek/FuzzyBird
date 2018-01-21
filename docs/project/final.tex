@@ -121,7 +121,7 @@ spadania, możemy obliczyć $x_{safe}$:
     \draw (1,0) node[below]{$x_{safe}$};
     \draw [orange] (1,0) -- (1,1) -- (4,1) node[above, midway]{Unsafe};
   \end{tikzpicture}
-  \caption{Przyporządkowanie dla zmiennej \emph{XPos}}
+  \caption{Przynależność dla zmiennej \emph{XPos}}
 
   \centering
   \begin{tikzpicture}
@@ -131,7 +131,7 @@ spadania, możemy obliczyć $x_{safe}$:
     \draw (0,1) node[left]{1};
     \draw [green] (0,1) -- (2,1) node[above, midway]{Ok};
   \end{tikzpicture}
-  \caption{Przyporządkowanie dla zmiennej \emph{Altitude}}
+  \caption{Przynależność dla zmiennej \emph{Altitude}}
 
   \centering
   \begin{tikzpicture}
@@ -143,7 +143,7 @@ spadania, możemy obliczyć $x_{safe}$:
     \draw [brown] (0,1) -- (1,1) node[above, midway]{Flap} -- (1,0);
     \draw (1,0) node[below]{1};
   \end{tikzpicture}
-  \caption{Przyporządkowanie dla zmiennej \emph{Movement}}
+  \caption{Przynależność dla zmiennej \emph{Movement}}
 
 \end{figure}
 
@@ -197,7 +197,7 @@ Program składa się z następujących modułów:
 \item \textbf{Term}
 
   obiekt abstrakcyjny reprezentujący termin lingwistyczny oraz jego
-  funkcję przyporządkowania
+  funkcję przynależności
 
 \item \textbf{Norm}
 
@@ -211,12 +211,12 @@ Program składa się z następujących modułów:
 \item \textbf{Implicator}
 
   obiekt reprezentujący pojedynczą regułę: warunek i konkluzję, wykonuje
-  operację implikacji logicznej (iloczyn wartości przyporządkowania warunku i
+  operację implikacji logicznej (iloczyn wartości przynależności warunku i
   terminu konkluzji)
 
 \item \textbf{Aggregator}
 
-  obiekt reprezentujący agreagację wielu reguł w jedną wartość przyporządkowania
+  obiekt reprezentujący agreagację wielu reguł w jedną wartość przynależności
   za pomocą operatora sumy logicznej wartości implikatorów
 
 \item \textbf{RuleBlock}
@@ -231,31 +231,61 @@ Program składa się z następujących modułów:
 
 \end{enumerate}
 
-\subsection {Funkcje przyporządkowania}
+\subsection {Funkcje przynależności}
 
 \begin{enumerate}
 \item \textbf{Binary}
 
-  binarne przyporządkowanie, po jednej stronie zbocza przyjmuje wartość
+  binarna przynależność, po jednej stronie zbocza przyjmuje wartość
   niezerową, a po drugiej - zero
+
+  \begin{tikzpicture}
+  \draw [->, thick] (0,0) -- (4,0) node[right] {$x$};
+  \draw [->, thick] (0,0) -- (0,1.5) node[above] {$\mu(x)$};
+  \draw (1,0) -- (1,1) -- (4,1);
+  \end{tikzpicture}
 
 \item \textbf{Ramp}
 
   działa podobnie jak \emph{Binary}; zbocze funkcji jest pochyłe, a nie pionowe
+
+  \begin{tikzpicture}
+  \draw [->, thick] (0,0) -- (4,0) node[right] {$x$};
+  \draw [->, thick] (0,0) -- (0,1.5) node[above] {$\mu(x)$};
+  \draw (1,0) -- (1.5,1) -- (4,1);
+  \end{tikzpicture}
 
 \item \textbf{Rectangle}
 
   przyjmuje wartość niezerową dla określonego przedziału argumentów i zero dla
   pozostałych wartości
 
+  \begin{tikzpicture}
+  \draw [->, thick] (0,0) -- (4,0) node[right] {$x$};
+  \draw [->, thick] (0,0) -- (0,1.5) node[above] {$\mu(x)$};
+  \draw (1,0) -- (1,1) -- (3,1) -- (3,0);
+  \end{tikzpicture}
+
 \item \textbf{Trapezoid}
 
   działa podobnie jak \emph{Rectangle}; oba zbocza są pochyłe, a nie pionowe
 
+  \begin{tikzpicture}
+  \draw [->, thick] (0,0) -- (4,0) node[right] {$x$};
+  \draw [->, thick] (0,0) -- (0,1.5) node[above] {$\mu(x)$};
+  \draw (1,0) -- (1.5,1) -- (2.5,1) -- (3,0);
+  \end{tikzpicture}
+
 \item \textbf{Triangle}
 
-  przyporządkowanie o kształcie trójkątnym, wartości przyjmowane dążą liniowo od zera do wierzchołka
+  przynależność o kształcie trójkątnym, wartości przyjmowane dążą liniowo od zera do wierzchołka
   trójkąta z lewej i z prawej strony oraz wynoszą zero poza jego obszarem
+
+  \begin{tikzpicture}
+  \draw [->, thick] (0,0) -- (4,0) node[right] {$x$};
+  \draw [->, thick] (0,0) -- (0,1.5) node[above] {$\mu(x)$};
+  \draw (1.5,0) -- (2,1) -- (2.5,0);
+  \end{tikzpicture}
 
 \end{enumerate}
 
