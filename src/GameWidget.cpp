@@ -86,6 +86,14 @@ void GameWidget::paintEvent(QPaintEvent*)
     painter.drawRect(bird.shape);
     painter.restore();
 
+#ifdef QT_DEBUG
+    painter.save();
+    painter.setBrush(Qt::NoBrush);
+    painter.setPen(Qt::red);
+    painter.drawRect(bird.shape);
+    painter.restore();
+#endif
+
     //paint game score
     painter.setPen(QPen(Constants::SCORE_COLOR));
     painter.setFont(Constants::SCORE_FONT);
